@@ -1,5 +1,6 @@
 package com.example.myfirsapp.presentation.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.myfirsapp.R
+import com.example.myfirsapp.RedditPostsActivity
 import com.example.myfirsapp.data.FireBaseRepository
 import com.example.myfirsapp.models.SignInResult
 import com.example.myfirsapp.models.SignInState
@@ -54,8 +56,11 @@ class SignInFragment : Fragment() {
 
     private fun handleSignIn(signInState: SignInResult){
         Log.d("hello", "${signInViewModel.signInResultLiveData.value}")
+        var intent = Intent(context, RedditPostsActivity::class.java)
         if(signInState == SignInResult.Successful){
             Log.d("viewmodel","successful")
+            startActivity(intent)
+
         }else{
             Log.d("viewmodel","nouu")
         }

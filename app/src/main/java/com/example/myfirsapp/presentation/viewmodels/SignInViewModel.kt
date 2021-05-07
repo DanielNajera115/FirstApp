@@ -26,15 +26,16 @@ class SignInViewModel: ViewModel(){
     fun signIn(userName: String, password: String) {
 
         val signIn = signInUseCase(userName,password)
-            .doOnComplete{ _signInStateLiveData.postValue(SignInState.Connected)
-            _signInResultLiveEvent.postValue(SignInResult.Successful)}
-            .doOnError { Log.d("view","eso") }
-
-        if(signInResultLiveData.value == SignInResult.Successful){
-            Log.d("view","yepmodel")
-        }else{
-            Log.d("view","nopmodel")
-        }
-
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe {
+                    _signInStateLiveData.postValue(SignInState.Connecting) }
+            .doOnComplete{
+                _signInStateLiveData.postValue(SignInState.Connected)
+                _signInResultLiveEvent.postValue(SignInResult.Successful)}
+            .doOnError {
+                _signInStateLiveData.postValue(SignInState.Idle)
+                _signInResultLiveEvent.postValue(SignInResult.Error)
+            }
+                .subscribe()
     }
 }
