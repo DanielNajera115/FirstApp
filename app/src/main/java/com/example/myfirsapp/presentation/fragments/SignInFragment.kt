@@ -9,14 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.myfirsapp.R
 import com.example.myfirsapp.RedditPostsActivity
 import com.example.myfirsapp.data.FireBaseRepository
 import com.example.myfirsapp.models.SignInResult
-import com.example.myfirsapp.models.SignInState
 import com.example.myfirsapp.presentation.viewmodels.SignInViewModel
 
 class SignInFragment : Fragment() {
@@ -55,22 +53,9 @@ class SignInFragment : Fragment() {
     }
 
     private fun handleSignIn(signInState: SignInResult){
-        Log.d("hello", "${signInViewModel.signInResultLiveData.value}")
         var intent = Intent(context, RedditPostsActivity::class.java)
         if(signInState == SignInResult.Successful){
-            Log.d("viewmodel","successful")
             startActivity(intent)
-
-        }else{
-            Log.d("viewmodel","nouu")
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if(firebase.currentUser() == null)
-            Log.d("Main","No such user")
-        else
-            Log.d("Main","eso")
     }
 }

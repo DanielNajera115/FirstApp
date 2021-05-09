@@ -1,4 +1,4 @@
-package com.example.myfirsapp.domain
+package com.example.myfirsapp.domain.usecase
 
 import com.example.myfirsapp.data.SignInRepositoryImpl
 import io.reactivex.Completable

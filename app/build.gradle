@@ -74,6 +74,13 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.8.1'
 
+    //Dagger
+    implementation 'com.google.dagger:dagger:2.26'
+    implementation 'com.google.dagger:dagger-android:2.26'
+    implementation 'com.google.dagger:dagger-android-support:2.26'
+    kapt 'com.google.dagger:dagger-android-processor:2.26'
+    kapt 'com.google.dagger:dagger-compiler:2.26'
+
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
 }

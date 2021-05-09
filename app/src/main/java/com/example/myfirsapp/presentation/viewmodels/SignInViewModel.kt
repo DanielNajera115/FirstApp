@@ -2,15 +2,16 @@ package com.example.myfirsapp.presentation.viewmodels
 
 
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myfirsapp.domain.SignInUseCaseImpl
+import com.example.myfirsapp.domain.usecase.SignInUseCase
+import com.example.myfirsapp.domain.usecase.SignInUseCaseImpl
 import com.example.myfirsapp.models.SignInResult
 import com.example.myfirsapp.models.SignInState
 import com.example.myfirsapp.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class SignInViewModel: ViewModel(){
 
