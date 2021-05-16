@@ -9,7 +9,9 @@ import androidx.activity.viewModels
 import com.example.myfirsapp.R
 import com.example.myfirsapp.data.FireBaseRepository
 import com.example.myfirsapp.presentation.viewmodels.SignInViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 

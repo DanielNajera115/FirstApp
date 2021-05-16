@@ -1,13 +1,20 @@
 package com.example.myfirsapp.utils.dependencyinjection
 
+import com.example.myfirsapp.domain.repositories.SignInRepository
 import com.example.myfirsapp.domain.usecase.SignInUseCase
 import com.example.myfirsapp.domain.usecase.SignInUseCaseImpl
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
 
 @Module
-abstract class UseCaseModule {
+@InstallIn(ApplicationComponent::class)
+object UseCaseModule {
 
-    @Binds
-    abstract fun bindSignInUseCase(useCase: SignInUseCaseImpl): SignInUseCase
+    @Singleton
+    @Provides
+    fun provideSignInUseCase(signInUseCaseImpl: SignInUseCaseImpl): SignInUseCase = signInUseCaseImpl
+
 }

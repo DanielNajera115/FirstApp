@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myfirsapp.R
 import com.example.myfirsapp.presentation.adapters.RedditAdapter
 import com.example.myfirsapp.presentation.viewmodels.RedditViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
+@AndroidEntryPoint
 class RedditPostFragment : Fragment() {
 
     private val redditAdapter = RedditAdapter()

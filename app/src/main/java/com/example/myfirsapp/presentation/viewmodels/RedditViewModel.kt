@@ -1,19 +1,18 @@
 package com.example.myfirsapp.presentation.viewmodels
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.myfirsapp.data.models.RedditPost
-import com.example.myfirsapp.data.repositories.RedditRepo
+import com.example.myfirsapp.domain.repositories.RedditRepo
 import kotlinx.coroutines.flow.Flow
 
-class RedditViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val redditRepo = RedditRepo(application)
-
+class RedditViewModel@ViewModelInject constructor(
+        private val redditRepo : RedditRepo
+) : ViewModel() {
     fun fetchPosts(): Flow<PagingData<RedditPost>> {
-        return redditRepo.fetchPosts().cachedIn(viewModelScope)
+        return redditRepo().cachedIn(viewModelScope)
     }
 }

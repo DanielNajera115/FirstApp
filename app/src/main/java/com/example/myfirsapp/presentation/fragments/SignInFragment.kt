@@ -16,7 +16,9 @@ import com.example.myfirsapp.RedditPostsActivity
 import com.example.myfirsapp.data.FireBaseRepository
 import com.example.myfirsapp.models.SignInResult
 import com.example.myfirsapp.presentation.viewmodels.SignInViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInFragment : Fragment() {
 
     private val signInViewModel: SignInViewModel by viewModels()

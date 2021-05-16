@@ -13,9 +13,11 @@ import com.example.myfirsapp.presentation.fragments.NotesListFragment
 import com.example.myfirsapp.presentation.fragments.RedditPostFragment
 import com.example.myfirsapp.presentation.viewmodels.RedditViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class RedditPostsActivity : AppCompatActivity() {
 
 
@@ -30,7 +32,7 @@ class RedditPostsActivity : AppCompatActivity() {
 
         findViewById<BottomNavigationView>(R.id.bottomNavigationView).setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.home->setCurrentFragment(firstFragment)
+                R.id.menuHome->setCurrentFragment(firstFragment)
                 R.id.menuNotes->setCurrentFragment(secondFragment)
             }
             true

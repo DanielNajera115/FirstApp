@@ -7,20 +7,20 @@ import androidx.paging.PagingData
 import com.example.myfirsapp.data.models.RedditPost
 import com.example.myfirsapp.data.network.RedditClient
 import com.example.myfirsapp.data.network.RedditService
+import com.example.myfirsapp.domain.repositories.RedditRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 
-class RedditRepo(context: Context){
+class RedditRepoImpl() : RedditRepo{
 
     private val redditService = RedditClient.getClient().create(RedditService::class.java)
 
-    fun fetchPosts(): Flow<PagingData<RedditPost>> {
+    override fun invoke() : Flow<PagingData<RedditPost>>{
         return Pager(
-            PagingConfig(pageSize = 40, enablePlaceholders = false)
+                PagingConfig(pageSize = 40, enablePlaceholders = false)
         ) {
             RedditPagingSource(redditService)
         }.flow.flowOn(Dispatchers.IO)
     }
-
 }
