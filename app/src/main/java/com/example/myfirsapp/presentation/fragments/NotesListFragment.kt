@@ -1,16 +1,16 @@
 package com.example.myfirsapp.presentation.fragments
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
+import android.widget.Toolbar
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.myfirsapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class NotesListFragment : Fragment() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

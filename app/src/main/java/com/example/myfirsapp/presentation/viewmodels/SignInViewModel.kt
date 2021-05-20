@@ -41,5 +41,6 @@ class SignInViewModel @ViewModelInject constructor(
                 _signInResultLiveEvent.postValue(SignInResult.Error)
             }
                 .subscribe()
+
     }
 }

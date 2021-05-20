@@ -35,14 +35,7 @@ class FireBaseRepository {
                     itWorks = true
                 }
             }
-      //  if(itWorks){
-        //    Log.d("repo","yep")
             return Completable.complete()
-      //  }
-//        else
-//            Log.d("repo","nop")
-//            return Completable.error(Throwable("No such email or password"))
-
     }
 
 }
