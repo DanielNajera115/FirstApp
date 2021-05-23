@@ -11,6 +11,9 @@ import androidx.room.PrimaryKey
  * Andromeda
  */
 @Entity(tableName = "posts")
-data class MyPosts(@ColumnInfo(name = "title") val title: String,
-                   @PrimaryKey @ColumnInfo(name = "comment_count") val commentCount: Int,
-                   @ColumnInfo(name = "score") val score : String)
+data class MyPosts(
+        @PrimaryKey @ColumnInfo(name = "id") val id : Int,
+        @ColumnInfo(name = "title") val title: String,
+        @ColumnInfo(name = "comment_count") val commentCount: Int,
+        @ColumnInfo(name = "score") val score : String
+        )

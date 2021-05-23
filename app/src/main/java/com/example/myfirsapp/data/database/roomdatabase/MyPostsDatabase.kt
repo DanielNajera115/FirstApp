@@ -13,30 +13,30 @@ import com.example.myfirsapp.data.database.entity.MyPosts
  * Insulet Corporation
  * Andromeda
  */
-@Database(entities = arrayOf(MyPosts::class), version = 1, exportSchema = false)
-public abstract class WordRoomDatabase : RoomDatabase() {
+@Database(entities = [MyPosts::class], version = 1, exportSchema = false)
+abstract class MyPostsDatabase : RoomDatabase() {
 
     abstract fun wordDao(): PostsDao
 
     companion object {
-        // Singleton prevents multiple instances of database opening at the
-        // same time.
         @Volatile
-        private var INSTANCE: WordRoomDatabase? = null
+        private var INSTANCE: MyPostsDatabase? = null
 
-        fun getDatabase(context: Context): WordRoomDatabase {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
-            return INSTANCE ?: synchronized(this) {
+        fun getDatabase(context: Context): MyPostsDatabase{
+            val tempInstance = INSTANCE
+            if(tempInstance != null){
+                return tempInstance
+            }
+            synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    WordRoomDatabase::class.java,
-                    "post_database"
+                    MyPostsDatabase::class.java,
+                    "user_database"
                 ).build()
                 INSTANCE = instance
-                // return instance
-                instance
+                return instance
             }
         }
     }
+
 }
